@@ -11,6 +11,8 @@ import DZNEmptyDataSet
 
 class MyTableViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
+    var books: [Book]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,6 +22,12 @@ class MyTableViewController: UITableViewController, DZNEmptyDataSetSource, DZNEm
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        books = [
+            Book(title: "Book1", author: "Author1", pages: 100, language: .English),
+            Book(title: "Book2", author: "Author2", pages: 200, language: .English),
+            Book(title: "Book3", author: "Author3", pages: 300, language: .English)
+        ]
+    
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
         
@@ -77,23 +85,31 @@ class MyTableViewController: UITableViewController, DZNEmptyDataSetSource, DZNEm
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return books.count
     }
     
-    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-    
-    // Configure the cell...
-    
-    return cell
+        let cell = tableView.dequeueReusableCellWithIdentifier("CellTypeBasic", forIndexPath: indexPath) as! BasicTableViewCell
+        
+        
+        // Configure the cell...
+        let row = indexPath.row
+        let book = books[row]
+        
+        //for default tableviewcell style
+        //cell.textLabel?.text = book.title
+        //cell.detailTextLabel?.text = book.author
+        cell.Title.text = book.title
+        cell.Pages.text = "\(book.pages)"
+        
+        return cell
     }
-    */
+    
     
     /*
     // Override to support conditional editing of the table view.
@@ -130,14 +146,26 @@ class MyTableViewController: UITableViewController, DZNEmptyDataSetSource, DZNEm
     }
     */
     
-    /*
+    
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        
+        let detailViewController = segue.destinationViewController as! BookDetailTableViewController
+        let indexPath = tableView.indexPathForSelectedRow
+        let intRow = indexPath!.row
+        let book = books[intRow]
+        detailViewController.book = book
+        detailViewController.completionHandler = { book in
+            //chanage main model
+            self.books[intRow] = book
+            self.tableView.reloadData()
+        }
+        
+        
+    }    
     
 }
