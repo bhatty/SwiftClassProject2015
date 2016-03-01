@@ -148,19 +148,11 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
-		288FFB771C4FE5C300C3EF38 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
 		28CDC8151C25D8A300004BB2 = {
 			isa = PBXGroup;
 			children = (
 				288864A51C5FB7DC00F2200D /* Views */,
 				288864AB1C5FB7DC00F2200D /* Model */,
-				288FFB771C4FE5C300C3EF38 /* View */,
 				288FFB761C4FE5B200C3EF38 /* Controller */,
 				288FFB751C4FE5AC00C3EF38 /* Model */,
 				28CDC8201C25D8A300004BB2 /* ClassProject */,

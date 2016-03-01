@@ -107,7 +107,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pages" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d2F-Ii-hxc">
                                             <rect key="frame" x="257" y="7" width="47" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -115,7 +115,7 @@
                                 <connections>
                                     <outlet property="Pages" destination="d2F-Ii-hxc" id="DnY-Zl-bcy"/>
                                     <outlet property="Title" destination="QRp-pP-adh" id="i6b-Lm-HHW"/>
-                                    <segue destination="jEn-YW-mk9" kind="show" id="SOv-nL-xBK">
+                                    <segue destination="jEn-YW-mk9" kind="show" identifier="itemDetailSegue" id="SOv-nL-xBK">
                                         <nil key="action"/>
                                     </segue>
                                 </connections>
@@ -126,7 +126,13 @@
                             <outlet property="delegate" destination="Ia6-mn-65c" id="NM5-h5-Bca"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="v4q-oU-Gb3"/>
+                    <navigationItem key="navigationItem" id="v4q-oU-Gb3">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="tr6-mP-fSz">
+                            <connections>
+                                <segue destination="gvJ-J4-JgQ" kind="presentation" identifier="addItemSegue" id="gSO-rn-UPg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="84m-NQ-DeY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -244,6 +250,7 @@
                             <outlet property="delegate" destination="jEn-YW-mk9" id="slu-Ng-b0h"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="qJt-kI-tKA"/>
                     <connections>
                         <outlet property="author" destination="bRs-D0-5er" id="lxO-Nm-yeH"/>
                         <outlet property="language" destination="xZ1-Is-4qK" id="pv9-Wf-dFs"/>
@@ -259,6 +266,22 @@
                 </view>
             </objects>
             <point key="canvasLocation" x="2061" y="-13"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="VIt-uL-0bx">
+            <objects>
+                <navigationController id="gvJ-J4-JgQ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TIy-tF-tAF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="jEn-YW-mk9" kind="relationship" relationship="rootViewController" id="q84-Ls-ymb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sMS-Hy-lbS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1399" y="729"/>
         </scene>
         <!--Edit View Controller-->
         <scene sceneID="dNM-Sd-Lnx">
@@ -294,4 +317,7 @@
         <image name="icon-profile" width="30" height="30"/>
         <image name="icon-stuff" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="SOv-nL-xBK"/>
+    </inferredMetricsTieBreakers>
 </document>
