@@ -30,6 +30,7 @@
 		28CDC8421C25D8A300004BB2 /* ClassProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CDC8411C25D8A300004BB2 /* ClassProjectUITests.swift */; };
 		28D681771C5BB381000D55C7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D681761C5BB381000D55C7 /* ProfileViewController.swift */; };
 		28D681791C5D296B000D55C7 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28D681781C5D296B000D55C7 /* Media.xcassets */; };
+		28EEE0DA1C9A34C000C20D33 /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = 28EEE0D91C9A34C000C20D33 /* TODO */; };
 		C317AF8ADCA42E534E6B0E87 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B26E03238BF704170300D8 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,7 +58,7 @@
 		288864A81C5FB7DC00F2200D /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditViewController.swift; path = ../icw1502/TableViewBooks/Controller/EditViewController.swift; sourceTree = "<group>"; };
 		288864AA1C5FB7DC00F2200D /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		288FFB7E1C50743800C3EF38 /* MyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTableViewController.swift; sourceTree = "<group>"; };
-		28B779A41C53F1F1009B6AB4 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Item.swift; path = Model/Item.swift; sourceTree = "<group>"; };
+		28B779A41C53F1F1009B6AB4 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Item.swift; path = ../../ClassProject/Model/Item.swift; sourceTree = "<group>"; };
 		28CDC81E1C25D8A300004BB2 /* ClassProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClassProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28CDC8211C25D8A300004BB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28CDC8231C25D8A300004BB2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +74,7 @@
 		28CDC8431C25D8A300004BB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28D681761C5BB381000D55C7 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Controller/ProfileViewController.swift; sourceTree = "<group>"; };
 		28D681781C5D296B000D55C7 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		28EEE0D91C9A34C000C20D33 /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
 		29F8C415A9C46D3432E16FD6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		49B26E03238BF704170300D8 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -123,18 +125,11 @@
 		288864AB1C5FB7DC00F2200D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				28B779A41C53F1F1009B6AB4 /* Item.swift */,
 				288864AA1C5FB7DC00F2200D /* Book.swift */,
 			);
 			name = Model;
 			path = ../icw1502/TableViewBooks;
-			sourceTree = "<group>";
-		};
-		288FFB751C4FE5AC00C3EF38 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				28B779A41C53F1F1009B6AB4 /* Item.swift */,
-			);
-			name = Model;
 			sourceTree = "<group>";
 		};
 		288FFB761C4FE5B200C3EF38 /* Controller */ = {
@@ -154,7 +149,6 @@
 				288864A51C5FB7DC00F2200D /* Views */,
 				288864AB1C5FB7DC00F2200D /* Model */,
 				288FFB761C4FE5B200C3EF38 /* Controller */,
-				288FFB751C4FE5AC00C3EF38 /* Model */,
 				28CDC8201C25D8A300004BB2 /* ClassProject */,
 				28CDC8351C25D8A300004BB2 /* ClassProjectTests */,
 				28CDC8401C25D8A300004BB2 /* ClassProjectUITests */,
@@ -184,6 +178,7 @@
 				28D681781C5D296B000D55C7 /* Media.xcassets */,
 				28CDC82A1C25D8A300004BB2 /* LaunchScreen.storyboard */,
 				28CDC82D1C25D8A300004BB2 /* Info.plist */,
+				28EEE0D91C9A34C000C20D33 /* TODO */,
 			);
 			path = ClassProject;
 			sourceTree = "<group>";
@@ -331,6 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28CDC82C1C25D8A300004BB2 /* LaunchScreen.storyboard in Resources */,
+				28EEE0DA1C9A34C000C20D33 /* TODO in Resources */,
 				28CDC8291C25D8A300004BB2 /* Assets.xcassets in Resources */,
 				28D681791C5D296B000D55C7 /* Media.xcassets in Resources */,
 				28CDC8271C25D8A300004BB2 /* Main.storyboard in Resources */,

@@ -7,12 +7,13 @@
 //
 
 import Foundation
+import UIKit
 
 
 struct Item {
     var name: String
     var description: String?
     var value: Int?
-    var image: String?
+    var image: UIImage?
     var thumb: String?
 }

@@ -21,8 +21,8 @@ class MyTableViewController: UITableViewController, DZNEmptyDataSetSource, DZNEm
         
         books = [
             Book(title: "Book1", author: "Author1", pages: 100, language: .English),
-            Book(title: "Book2", author: "Author2", pages: 200, language: .English),
-            Book(title: "Book3", author: "Author3", pages: 300, language: .English)
+            //Book(title: "Book2", author: "Author2", pages: 200, language: .English),
+            //Book(title: "Book3", author: "Author3", pages: 300, language: .English)
         ]
         
         navigationItem.title = "My Stuff"
@@ -77,9 +77,15 @@ class MyTableViewController: UITableViewController, DZNEmptyDataSetSource, DZNEm
     }
     
     func emptyDataSetDidTapButton(scrollView: UIScrollView!) {
-        let ac = UIAlertController(title: "Button tapped!", message: nil, preferredStyle: .Alert)
-        ac.addAction(UIAlertAction(title: "Hurray", style: .Default, handler: nil))
-        presentViewController(ac, animated: true, completion: nil)
+//        let ac = UIAlertController(title: "Button tapped!", message: nil, preferredStyle: .Alert)
+//        ac.addAction(UIAlertAction(title: "Hurray", style: .Default, handler: nil))
+//        presentViewController(ac, animated: true, completion: nil)
+//        
+//        let vc = navigationController as! UINavigationController
+//
+//        let addItemSegue = UIStoryboardSegue(identifier: "addItemSegue", source: vc, destination: vc)
+//        addItemToList(addItemSegue)
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -130,6 +136,17 @@ class MyTableViewController: UITableViewController, DZNEmptyDataSetSource, DZNEm
             // Delete the row from the data source
             books.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            
+           
+            if (books.count == 0) {
+                
+                //refresh to display the pretty emptydataset page
+                self.tableView.reloadData()
+            
+                //get rid of 'Done' button in edit mode (don't forget to bring it back!)
+                self.navigationItem.rightBarButtonItem = nil
+            }
+            
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
@@ -150,13 +167,6 @@ class MyTableViewController: UITableViewController, DZNEmptyDataSetSource, DZNEm
     // Return false if you do not want the item to be re-orderable.
     return true
     }
-    
-    
-    //TODO: is this needed?
-//    @IBAction func addItem(sender: AnyObject) {
-//        
-//        performSegueWithIdentifier("addItemSegue", sender: self)
-//    }
     
     
     // MARK: - Navigation
@@ -180,22 +190,36 @@ class MyTableViewController: UITableViewController, DZNEmptyDataSetSource, DZNEm
             }
         }
         else if segue.identifier == "addItemSegue" {
-            let navVC = segue.destinationViewController as! UINavigationController
-            let detailViewController = navVC.topViewController as! BookDetailTableViewController
-            let book = Book(title: "New Title", author: "New Author", pages: 1, language: .English)
-            
-            //TODO: Insert alphabetically
-            books.insert(book, atIndex: 0)
-            detailViewController.book = book
-            detailViewController.completionHandler = { book in
-                //chanage main model
-                self.books[0] = book
-                self.tableView.reloadData()
-            }
-            
-            detailViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: detailViewController, action: "done")
+            addItemToList(segue)
         }
         
-    }    
+    }
+    
+    func addItemToList(segue: UIStoryboardSegue) {
+        let navVC = segue.destinationViewController as! UINavigationController
+        let detailViewController = navVC.topViewController as! BookDetailTableViewController
+        let book = Book(title: "New Title", author: "New Author", pages: 1, language: .English)
+        
+        //TODO: Insert alphabetically
+        books.insert(book, atIndex: 0)
+        detailViewController.book = book
+        detailViewController.completionHandler = { book in
+            //chanage main model
+            self.books[0] = book
+            self.tableView.reloadData()
+        }
+        
+        detailViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: detailViewController, action: "done")
+
+        if (self.navigationItem.rightBarButtonItem == nil) {
+            
+            //brings edit button back
+            self.navigationItem.rightBarButtonItem = editButtonItem()
+            
+            //programmatically toggles from 'Done' to 'Edit'
+            self.setEditing(false, animated: true)
+        }
+        
+    }
     
 }

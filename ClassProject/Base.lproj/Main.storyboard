@@ -38,10 +38,20 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="empty-book" translatesAutoresizingMaskIntoConstraints="NO" id="AL7-kc-nTs">
                                 <rect key="frame" x="119" y="28" width="152" height="143"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dc1-6w-R90">
+                                <rect key="frame" x="147" y="168" width="96" height="30"/>
+                                <state key="normal" title="Update image"/>
+                                <connections>
+                                    <action selector="pickProfileImage:" destination="guO-3q-5ZM" eventType="touchUpInside" id="4aj-Fp-elP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="icon-profile" id="6Mj-7I-Npr" userLabel="Profile"/>
+                    <connections>
+                        <outlet property="profileImage" destination="AL7-kc-nTs" id="7BC-25-uj7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rDA-NO-JfS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -228,7 +238,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Language" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqg-QS-FO5">
-                                                    <rect key="frame" x="15" y="10" width="76" height="21.5"/>
+                                                    <rect key="frame" x="15" y="10" width="76" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
