@@ -21,8 +21,8 @@ class MyTableViewController: UITableViewController, DZNEmptyDataSetSource, DZNEm
         
         books = [
             Book(title: "Book1", author: "Author1", pages: 100, language: .English),
-            //Book(title: "Book2", author: "Author2", pages: 200, language: .English),
-            //Book(title: "Book3", author: "Author3", pages: 300, language: .English)
+            Book(title: "Book2", author: "Author2", pages: 200, language: .English),
+            Book(title: "Book3", author: "Author3", pages: 300, language: .English)
         ]
         
         navigationItem.title = "My Stuff"
@@ -77,15 +77,7 @@ class MyTableViewController: UITableViewController, DZNEmptyDataSetSource, DZNEm
     }
     
     func emptyDataSetDidTapButton(scrollView: UIScrollView!) {
-//        let ac = UIAlertController(title: "Button tapped!", message: nil, preferredStyle: .Alert)
-//        ac.addAction(UIAlertAction(title: "Hurray", style: .Default, handler: nil))
-//        presentViewController(ac, animated: true, completion: nil)
-//        
-//        let vc = navigationController as! UINavigationController
-//
-//        let addItemSegue = UIStoryboardSegue(identifier: "addItemSegue", source: vc, destination: vc)
-//        addItemToList(addItemSegue)
-        
+        performAddItem(self)
     }
     
     override func didReceiveMemoryWarning() {
@@ -190,36 +182,37 @@ class MyTableViewController: UITableViewController, DZNEmptyDataSetSource, DZNEm
             }
         }
         else if segue.identifier == "addItemSegue" {
-            addItemToList(segue)
-        }
-        
-    }
-    
-    func addItemToList(segue: UIStoryboardSegue) {
-        let navVC = segue.destinationViewController as! UINavigationController
-        let detailViewController = navVC.topViewController as! BookDetailTableViewController
-        let book = Book(title: "New Title", author: "New Author", pages: 1, language: .English)
-        
-        //TODO: Insert alphabetically
-        books.insert(book, atIndex: 0)
-        detailViewController.book = book
-        detailViewController.completionHandler = { book in
-            //chanage main model
-            self.books[0] = book
-            self.tableView.reloadData()
-        }
-        
-        detailViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: detailViewController, action: "done")
+            let navVC = segue.destinationViewController as! UINavigationController
+            let detailViewController = navVC.topViewController as! BookDetailTableViewController
+            let book = Book(title: "New Title", author: "New Author", pages: 1, language: .English)
+            
+            //TODO: Insert alphabetically
+            books.insert(book, atIndex: 0)
+            detailViewController.book = book
+            detailViewController.completionHandler = { book in
+                //chanage main model
+                self.books[0] = book
+                self.tableView.reloadData()
+            }
+            
+            detailViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: detailViewController, action: "done")
+            
+            if (self.navigationItem.rightBarButtonItem == nil) {
+                
+                //brings edit button back
+                self.navigationItem.rightBarButtonItem = editButtonItem()
+                
+                //programmatically toggles from 'Done' to 'Edit'
+                self.setEditing(false, animated: true)
+            }
 
-        if (self.navigationItem.rightBarButtonItem == nil) {
-            
-            //brings edit button back
-            self.navigationItem.rightBarButtonItem = editButtonItem()
-            
-            //programmatically toggles from 'Done' to 'Edit'
-            self.setEditing(false, animated: true)
         }
         
     }
     
+    
+    @IBAction func performAddItem(sender: AnyObject) {
+        performSegueWithIdentifier("addItemSegue", sender: self)
+        
+    }
 }

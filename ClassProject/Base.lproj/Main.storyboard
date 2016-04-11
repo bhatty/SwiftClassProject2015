@@ -139,10 +139,13 @@
                     <navigationItem key="navigationItem" id="v4q-oU-Gb3">
                         <barButtonItem key="leftBarButtonItem" systemItem="add" id="tr6-mP-fSz">
                             <connections>
-                                <segue destination="gvJ-J4-JgQ" kind="presentation" identifier="addItemSegue" id="gSO-rn-UPg"/>
+                                <action selector="performAddItem:" destination="Ia6-mn-65c" id="Kll-Ag-MoS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="gvJ-J4-JgQ" kind="presentation" identifier="addItemSegue" id="NPi-Gn-8Gu"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="84m-NQ-DeY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
